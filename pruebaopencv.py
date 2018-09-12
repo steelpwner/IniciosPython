@@ -1,16 +1,16 @@
-import cv2, time
+import numpy as np
+import cv2
 
-# 1. Creación de un objeto. El código de la cámara del computador es 0
-video=cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0)
 
-# 3. Crear un objeto ventana
-check, frame= video.read()
+while(True):
 
-print (check)
-print (frame)
+    ret, frame = cap.read()
 
-# 4. Mostrar el frame
-cv2.imshow("Captura", frame)
-# 2. Apagar la cámara
-video.release()
+    cv2.imshow('frame',frame)
 
+    if cv2.waitKey(20) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()
